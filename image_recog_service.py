@@ -76,7 +76,7 @@ def predict(file_name, doc=False):
         scores.append(c)
     new_labels = []
     new_scores = []
-    for label, score in zip(new_labels, new_scores):
+    for label, score in zip(labels, scores):
         if score >= 0.11:
             new_labels.append(label)
             new_scores.append(score)

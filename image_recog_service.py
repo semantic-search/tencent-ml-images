@@ -79,7 +79,7 @@ def predict(file_name, doc=False):
     for label, score in zip(new_labels, new_scores):
         if score >= 0.11:
             new_labels.append(label)
-            new_scores.append(scores)
+            new_scores.append(score)
 
     if doc:
         full_res = {

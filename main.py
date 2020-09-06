@@ -15,13 +15,9 @@ def send_to_topic(topic, value_to_send_dic):
 
 
 if __name__ == '__main__':
-    print("in main")
     for message in init.consumer_obj:
         global_init()
-        print('xxx--- inside tencent ml images---xxx')
-        print(globals.KAFKA_HOSTNAME + ':' + globals.KAFKA_PORT)
         message = message.value
-        print("MESSAGE RECEIVED consumer_tencent_ml_images: ")
         db_key = str(message)
         db_object = Cache.objects.get(pk=db_key)
         file_name = db_object.file_name

@@ -74,13 +74,20 @@ def predict(file_name, doc=False):
     for vals in scores_np:
         c = float(vals)
         scores.append(c)
+    new_labels = []
+    new_scores = []
+    for label, score in zip(new_labels, new_scores):
+        if score >= 0.11:
+            new_labels.append(label)
+            new_scores.append(scores)
+
     if doc:
         full_res = {
-            "labels": labels,
-            "scores": scores
+            "labels": new_labels,
+            "scores": new_scores
         }
         text_resp = {
-            "labels": labels
+            "labels": new_labels
         }
         response_dict = {
             "full_results": full_res,
@@ -91,14 +98,14 @@ def predict(file_name, doc=False):
     else:
         full_res = {
             "file_name": file_name,
-            "labels": labels,
-            "scores": scores,
+            "labels": new_labels,
+            "scores": new_scores,
             "is_doc_type": False
 
         }
         text_resp = {
             "file_name": file_name,
-            "labels": labels,
+            "labels": new_labels,
             "is_doc_type": False
         }
         response_dict = {

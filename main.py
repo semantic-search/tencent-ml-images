@@ -41,8 +41,8 @@ def update_state(file_name):
     try:
         requests.request("POST", globals.DASHBOARD_URL,  data=payload)
     except Exception as e:
-        print(f"{e} EXCEPTION IN UPDATE STATE API CALL......")
-        err_logger(f"{e} EXCEPTION IN UPDATE STATE API CALL......FILE ID {FILE_ID}")
+        print(str(e) + "EXCEPTION IN UPDATE STATE API CALL......")
+        err_logger(str(e) + "EXCEPTION IN UPDATE STATE API CALL......FILE ID" + str(FILE_ID))
 
 
 if __name__ == '__main__':

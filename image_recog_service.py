@@ -53,7 +53,7 @@ def preprocess(img):
     return img
 
 
-def predict(file_name, doc=False):
+def predict(file_name):
 
     # inference
     labels = []
@@ -81,36 +81,11 @@ def predict(file_name, doc=False):
             new_labels.append(label)
             new_scores.append(score)
 
-    if doc:
+
         full_res = {
             "labels": new_labels,
             "scores": new_scores
         }
-        text_resp = {
-            "labels": new_labels
-        }
-        response_dict = {
-            "full_results": full_res,
-            "text": text_resp
-        }
-        os.remove(file_name)
-        return response_dict
-    else:
-        full_res = {
-            "file_name": file_name,
-            "labels": new_labels,
-            "scores": new_scores,
-            "is_doc_type": False
 
-        }
-        text_resp = {
-            "file_name": file_name,
-            "labels": new_labels,
-            "is_doc_type": False
-        }
-        response_dict = {
-            "full_results": full_res,
-            "text": text_resp
-        }
         os.remove(file_name)
-        return response_dict
+        return full_res
